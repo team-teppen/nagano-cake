@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <% if customer_signed_in? %>
+      <p>会員ログイン中(確認用)</p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
