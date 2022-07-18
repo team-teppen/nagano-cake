@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
-}
+  }
 
   root to: "public/homes#top"
   get "about" => "public/homes#about", as: "about"
