@@ -14,7 +14,7 @@ class Admin::GenresController < ApplicationController
     end
     
     def update
-        @genres = Gerne.all
+        @genres = Genre.all
     end
     
     private
