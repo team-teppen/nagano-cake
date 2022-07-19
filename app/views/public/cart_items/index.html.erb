@@ -1,0 +1,12 @@
+<h2>ショッピングカート</h2>
+
+<%= link_to 'カート内を空にする', url: all_destroy_path, method: :delete %>
+
+<%= @cart_items.each do |cart_item| %>
+  <%= cart_item.name %>
+  <%= cart_item.item.with_tax_price %>
+  <%= cart_item.subtotal %>
+  <%= link_to '削除する', url: cart_item_path, method: :delete %>
+  <% @total +=  cart_item.subtotal %>
+<% end %>
+合計金額<%= @total %>

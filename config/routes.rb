@@ -14,21 +14,24 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get "about" => "public/homes#about", as: "about"
 
+  scope module: :public do
+  resources :cart_items, only: [:index, :update, :create, :destroy]
   resources :items, only: [:index, :show]
+  resources :orders , only: [:new, :create, :index, :show]
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
 
-  
+
   get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
   get 'customers/my_page' => 'public/customers#show', as: 'my_page'
 
-  resources :cart_items, only: [:index, :update, :create, :destroy]
   delete 'cart_items/all_destroy' => 'public/cart_items#all_destroy', as: 'all_destroy'
 
-  resources :orders , only: [:new, :create, :index, :show]
   post 'orders/confirm' => 'public/orders#confirm', as: 'confirm'
   get 'orders/complete' => 'public/orders#complete', as: 'complete'
 
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
 
 
   namespace :admin do
