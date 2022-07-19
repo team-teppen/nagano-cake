@@ -1,5 +1,14 @@
 <h1>商品新規登録</h1>
-<table>
+
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model:Item.new, url: admin_items_path, method: :post do |f| %>
   <table class="new-form-table">
     <tbody>
@@ -17,7 +26,7 @@
       </tr>
       <tr>
         <th><%= f.label :ジャンル %></th>
-        <td><%= f.collection_select(:genre_id, @genres ,:id, :name, include_blank: "--選択してください--") %></td>
+        <td><%= f.collection_select(:genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--") %></td>
       </tr>
       <tr>
         <th><%= f.label :税抜価格 %></th>
