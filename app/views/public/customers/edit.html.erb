@@ -1,9 +1,9 @@
-test<div class="container">
+<div class="container">
     <h1 class="form-title">会員情報編集</h1>
         <div class="row">
             <div class="col-md-6 col-md-ofset-3 form-wrapper">
-            <%= form_with model: @customer, url: customer_registration_path,method: :patch, local: true do |f| %>
-              <%= render "public/shared/error_messages", resource: resource %>
+            <%= form_with model: @customer, url: update_customer_path, method: :patch, local: true do |f| %>
+              <%= render "public/shared/error_messages", resource: @customer %>
 
               <div class="form-group">
                 <%= f.label :name, "氏名" %>
@@ -36,9 +36,7 @@ test<div class="container">
                 <%= f.label :email, "メールアドレス" %>
                 <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
               </div>
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-              <% end %>
+              
 
               <%= f.submit "変更内容を保存", class: "btn btn-success" %>
               <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
