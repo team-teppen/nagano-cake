@@ -10,6 +10,12 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
   has_many :cart_items, dependent: :destroy
+  
+  def get_image
+    if image.attached?
+      image
+    end
+  end
 
   has_many :order_details, dependent: :destroy
 
