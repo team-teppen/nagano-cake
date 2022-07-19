@@ -10,3 +10,4 @@ Admin.create!(
    email: 'nagano-cake@hoge.com',
    password: '111111',
 )
+
