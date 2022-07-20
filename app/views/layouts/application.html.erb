@@ -11,8 +11,10 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %>
-      <p>会員ログイン中(確認用)</p>
+    <% if request.fullpath.include? "/admin" %>
+      <%= render 'layouts/admin_header' %>
+    <% else %>
+      <%= render 'layouts/customer_header' %>
     <% end %>
     <%= yield %>
   </body>
