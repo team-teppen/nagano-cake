@@ -9,6 +9,9 @@ class Public::ItemsController < ApplicationController
     else
       @items = Item.where(is_active: "販売可").page(params[:page]).per(12)
     end
+
+    #後に詳細ページに記載
+    @cart_item = CartItem.new
   end
   
   def show

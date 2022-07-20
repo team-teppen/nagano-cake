@@ -15,9 +15,18 @@ Rails.application.routes.draw do
   get "about" => "public/homes#about", as: "about"
 
   scope module: :public do
-  resources :cart_items, only: [:index, :update, :create, :destroy]
+  resources :cart_items, only: [:index, :update, :create, :destroy] do
+    collection do
+      delete 'all_destroy' => 'public/cart_items#all_destroy', as: 'all_destroy'
+    end
+  end
+
   resources :items, only: [:index, :show]
-  resources :orders , only: [:new, :create, :index, :show]
+  resources :orders , only: [:new, :create, :index, :show] do
+    collection do
+      get 'complete' => 'orders#complete', as: 'complete'
+    end
+  end
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
@@ -26,10 +35,12 @@ Rails.application.routes.draw do
   patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
   get 'customers/my_page' => 'public/customers#show', as: 'my_page'
 
-  delete 'cart_items/all_destroy' => 'public/cart_items#all_destroy', as: 'all_destroy'
+
 
   post 'orders/confirm' => 'public/orders#confirm', as: 'confirm'
-  get 'orders/complete' => 'public/orders#complete', as: 'complete'
+
+
+
 
 
 
