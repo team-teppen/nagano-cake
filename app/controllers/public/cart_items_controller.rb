@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_items_params)
+    @cart_item = CartItem.new(cart_item_params)
     @cart_item.save
     redirect_back(fallback_location: root_path)
   end
