@@ -17,12 +17,6 @@
 
   <% @cart_items.each do |cart_item| %>
   <tr>
-    <!--分かりやすくするために記述したので消してokです-->
-    <td>[id <%= cart_item.id %>]</td>
-    <td>[item_id <%= cart_item.item_id %>]</td>
-    <td>[amount <%= cart_item.amount %>]</td>
-    <td>[item.id <%= cart_item.item.id %>]</td>
-    <!--ここまで-->
     <td><%= cart_item.item.name %></td>
     <td><%= cart_item.item.with_tax_price %></td>
     <td>
@@ -37,7 +31,11 @@
     <% @total +=  cart_item.subtotal %>
   </tr>
   <% end %>
-合計金額<%= @total %>
+   <tr>
+     <td>合計金額<%= @total %></td>
+   </tr>
 </tbody>
 </table>
 <%= link_to 'カート内を空にする', all_destroy_cart_items_path, method: :delete %>
+
+<%= link_to '注文を確定する', new_order_path %>
