@@ -3,6 +3,3 @@
 <%= link_to 'アカウント登録', new_customer_registration_path %>
 <%= link_to 'ログイン', new_customer_session_path %>
 <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
-
-<%= render 'public/items/form', cart_item: @cart_item %>
-<%= link_to 'cartitems', cart_items_path %>
