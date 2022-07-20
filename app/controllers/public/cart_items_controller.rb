@@ -8,8 +8,9 @@ class Public::CartItemsController < ApplicationController
   def create
 
     @item = Item.find(cart_item_params[:item_id])
+    
     @cart_item = CartItem.new(cart_item_params)
-
+  
     @cart_item.customer_id = current_customer.id
 
     #カート内に同じ商品があれば追加
