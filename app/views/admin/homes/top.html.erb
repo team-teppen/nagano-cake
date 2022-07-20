@@ -1,14 +1,10 @@
 
-
-
-<h1>adminのtopページです</h1>
+<h1>注文履歴一覧</h1>
 
   <% if admin_signed_in? %>
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
   <% end %>
-
-
-<h1>注文履歴一覧</h1>
+  
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
