@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   has_one_attached :image
-  
+
   belongs_to :genre
-  
+
   validates :image, presence: true
   validates :name, presence: true
   validates :introduction, presence: true
@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
   has_many :cart_items, dependent: :destroy
-  
+
   def get_image
     if image.attached?
       image
@@ -21,6 +21,7 @@ class Item < ApplicationRecord
 
 
   def with_tax_price
+    #消費税計算
     (price * 1.1).floor
   end
 end

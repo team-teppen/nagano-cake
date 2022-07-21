@@ -16,6 +16,7 @@
     <% else %>
       <%= render 'layouts/customer_header' %>
     <% end %>
+    <%= flash[:success] %>
     <%= yield %>
   </body>
 </html>
