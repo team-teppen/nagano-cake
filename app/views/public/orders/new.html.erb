@@ -10,13 +10,19 @@
 
   配送先
   <%= f.radio_button :select_adress, 0 %>
-  <%= f.label :address, current_customer.address %>
+  <%= f.label :select_adress, "ご自身の住所" %>
+  <%= f.label :select_adress, current_customer.address_display %>
+  <%= f.label :select_adress, current_customer.customer_name %>
 
+
+  <% if current_customer.addresses.exists? %>
   <%= f.radio_button :select_adress, 1 %>
-  <%= f.label :address_id, "登録先住所から選択" %>
+  <%= f.label :select_adress, "登録先住所から選択" %>
   <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+  <% end %>
 
   <%= f.radio_button :select_adress, 2 %>
+  <%= f.label :select_adress, "新しいお届け先" %>
   <%= f.label :postal_code, "郵便番号" %>
   <%= f.text_field :postal_code %>
   <%= f.label :address, "住所" %>
