@@ -16,6 +16,7 @@ class Public::AddressesController < ApplicationController
     def create
       @address = Address.new(address_params)
       if @address.save
+        flash[:success] = "登録しました"
         redirect_to addresses_path(@address)
       else
         @addresses = Address.all
@@ -26,12 +27,14 @@ class Public::AddressesController < ApplicationController
     def update
       @address = Address.find(params[:id])
       @address.update(address_params)
+      flash[:success] = "更新しました"
       redirect_to addresses_path(@address)
     end
     
     def destroy
       @address = Address.find(params[:id])
       @address.destroy
+      flash[:success] = "削除しました"
       redirect_to addresses_path
     end
     
