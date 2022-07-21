@@ -23,15 +23,15 @@
     </tr>
     <% end %>
     <tr>
-      <td>合計金額</td>
+      <th>合計金額</th>
       <td><%= @total %></td>
     </tr>
     <tr>
-      <td>送料</td>
+      <th>送料</th>
       <td><%= @order.shipping_cost %></td>
     </tr>
     <tr>
-      <td>請求金額</td>
+      <th>請求金額</th>
       <td><%= @total + @order.shipping_cost %></td>
     </tr>
 

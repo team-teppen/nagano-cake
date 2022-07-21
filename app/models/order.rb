@@ -5,5 +5,8 @@ class Order < ApplicationRecord
 
   enum status: {入金待ち: 0,入金確認: 1,製作中: 2,発送準備中: 3,発送済み: 4}
 
+  def all_total_payment
+    total_payment + shipping_cost
+  end
 
 end
