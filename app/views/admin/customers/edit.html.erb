@@ -1,1 +1,64 @@
-Adminの会員情報編集ページ
+<div class="container">
+  <div class="d-flex flex-column justify-content-start">
+    
+    <h5 class="bg-light text-dark text-center" style="width:30%">
+      <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
+    </h5>
+    
+    <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch, local: true do |f| %>
+
+      <table class="table table-borderless">
+        <tr>
+          <th style="width:20%">会員ID</th>
+          <td style="width:80%"><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td class="form-inline">
+            <%= f.text_field :last_name %>&emsp;            
+            <%= f.text_field :first_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td class="form-inline">
+            <%= f.text_field :last_name_kana %>&emsp;
+            <%= f.text_field :first_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= f.text_field :address, size: 70 %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= f.text_field :phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.email_field :email, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会" %>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効" %> 
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="width:20%">
+            <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+          </td>
+        </tr>
+      </table>
+      
+    <% end %>
+  </div>
+</div>
