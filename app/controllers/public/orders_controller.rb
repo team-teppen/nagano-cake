@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
   end
@@ -6,6 +9,8 @@ class Public::OrdersController < ApplicationController
   def confirm
     #↓注文情報入力(new.html.erb)ページから送られてきた配送先の情報を@orderに保存する作業
     @order = Order.new(order_params)
+    #送料
+    @order.shipping_cost = 800
     #送られてきた値が0.1.2によって分岐させて@orderに格納して保存
     if params[:order][:select_adress] == "0"
       @order.postal_code = current_customer.postal_code
@@ -36,12 +41,12 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     #↓OrderDetailにCartItemの情報を保存する作業
-    @order_detail = OrderDetail.new
-    @order_detail.order_id = @order.id
     #現在保存されているCartItemのレコードをeachメソッドで一個ずつ取り出して
-    #上で作った空の@order_detailのカラムに各値を一つずつ格納して保存する
+    #@order_detailのカラムに各値を一つずつ格納して保存する
     @cart_items = CartItem.all
     @cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item.id
       @order_detail.amount = cart_item.amount
       @order_detail.price = cart_item.item.price
@@ -54,6 +59,14 @@ class Public::OrdersController < ApplicationController
 
   def complete
 
+  end
+
+  def index
+    @orders = Order.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   private

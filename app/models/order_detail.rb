@@ -13,5 +13,8 @@ class OrderDetail < ApplicationRecord
     #item.rbで定義したwith_tax_priceメソッドを使って小計を計算するメソッド
     item.with_tax_price * amount
   end
-    
+
+  def subtotal
+    item.with_tax_price * amount
+  end
 end

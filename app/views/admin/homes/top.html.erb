@@ -1,9 +1,5 @@
 
-<h1>注文履歴一覧</h1>
-
-  <% if admin_signed_in? %>
-    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-  <% end %>
+<h3>注文履歴一覧</h3>
   
 <table class='table table-hover table-inverse'>
   <thead>
@@ -11,18 +7,18 @@
       <th>購入日時</th>
       <th>購入者</th>
       <th>注文個数</th>
-      <th>注文ステータス(必須機能ではない)</th>
+      <th>注文ステータス</th>
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+  <% @orders.each do |order| %>
     <tr>
-      <td><%= order.created_at %></td>
+      <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_accept_order_path(order) %></td>
       <td><%= order.name %></td>
       <td><%= order.order_details.sum(:amount) %></td>
-      <td>注文ステータス</td>
+      <td><%= order.status %></td>
     </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 <%= paginate @orders %>

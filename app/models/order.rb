@@ -13,5 +13,8 @@ class Order < ApplicationRecord
     shipped: 4
   }
 
+  def all_total_payment
+    total_payment + shipping_cost
+  end
 
 end
