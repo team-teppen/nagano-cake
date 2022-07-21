@@ -1,5 +1,9 @@
-<%= form_with model: cart_item, url: cart_items_path, method: :post do |f| %>
-  <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
-  <%= f.hidden_field :item_id, :value => item.id %>
-  <%= f.submit 'カートに入れる' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <%= form_with model: cart_item, url: cart_items_path, method: :post do |f| %>
+      <%= f.select :amount, *[1..10], include_blank: "個数選択" %><span>個</span>
+      <%= f.hidden_field :item_id, :value => item.id %>
+      <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
