@@ -1,5 +1,5 @@
-<div class="container">
-    <h1 class="form-title">会員情報編集</h1>
+<div class="container pt-md-5">
+    <h1 class="form-title pb-md-4">会員情報編集</h1>
         <div class="row">
             <div class="col-md-6 col-md-ofset-3 form-wrapper">
             <%= form_with model: @customer, url: update_customer_path, method: :patch, local: true do |f| %>
@@ -18,27 +18,27 @@
               </div><br>
 
               <div class="form-inline">
-                <%= f.label :postal_code, "郵便番号" %>&emsp;
-                <%= f.text_field :postal_code, autofocus: true %>
+                <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>&emsp;
+                <%= f.text_field :postal_code, autofocus: true, class: "form-control" %>
               </div><br>
 
-              <div class="form-group">
-                <%= f.label :address, "住所" %>
-                <%= f.text_field :address, autofocus: true, class: "form-control" %>
-              </div>
+              <div class="form-inline">
+                <%= f.label :address, "住所" %>&emsp;
+                <%= f.text_field :address, autofocus: true, class: "form-control", size: 70 %>
+              </div><br>
 
-              <div class="form-group">
-                <%= f.label :phone_number, "電話番号" %>
+              <div class="form-inline">
+                <%= f.label :phone_number, "電話番号" %>&emsp;
                 <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
-              </div>
+              </div><br>
 
-              <div class = 'form-group'>
-                <%= f.label :email, "メールアドレス" %>
-                <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
-              </div>
+              <div class ="form-inline">
+                <%= f.label :email, "メールアドレス" %>&emsp;
+                <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com", size: 50 %>
+              </div><br>
 
 
-              <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+              <%= f.submit "変更内容を保存", class: "btn btn-success" %>&emsp;&emsp;
               <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
             <% end %>
             </div>
