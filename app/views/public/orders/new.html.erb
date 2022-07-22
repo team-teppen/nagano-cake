@@ -2,7 +2,7 @@
   <div class="row">
     <h4 class="bg-light text-dark text-center" style="margin-top: 30px; margin-bottom: 30px; width: 20%">注文情報入力</h4>
   </div>
-  
+
     <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
     <table>
       <tbody>
@@ -20,7 +20,7 @@
             <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
             </ul>
           </li>
-          
+
           <li><b>お届け先</b></li>
           <li>
             <ul>
@@ -42,10 +42,12 @@
                 <%= f.radio_button :select_adress, 1 %>
                 <%= f.label :select_adress, "登録先住所から選択" %>&emsp;&emsp;&nbsp;&nbsp;
                 <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+              <% else %>
+                <%= link_to "新規配送先登録はこちらから", addresses_path %>
               <% end %>
-            </ul>  
+            </ul>
           </li>
-                
+
           <li>
             <ul>
               <%= f.radio_button :select_adress, 2 %>
@@ -70,15 +72,15 @@
               <%= f.text_field :name, placeholder: "令和道子" %>
             </ul>
           </li>
-        </ul> 
-      </tbody>  
+        </ul>
+      </tbody>
     </table>
-    
+
     <div class="row">
       <dl class="col-md-6 offset-md-3">
         <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
       </dl>
-    </div>  
-    
+    </div>
+
   <% end %>
 </div>
