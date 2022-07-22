@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
     items_path
   end
   
+  def after_sign_out_path_for(resource)
+    if resource == :admin
+      admin_root_path
+    elsif resource == :customer
+      root_path
+    end
+  end
+
   private
 
     def configure_permitted_parameters
