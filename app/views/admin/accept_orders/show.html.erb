@@ -1,5 +1,5 @@
 <h1>注文履歴詳細</h1>
-  <table class="row">
+  <table class="row pl-5">
     <tbody class="col-12">
       <tr>
         <th>購入者</th>
@@ -18,14 +18,13 @@
       </tr>
       <tr>
         <th>支払方法</th>
-        <td><%= @order.payment_method %></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <th>注文ステータス</th>
         <td>
           <%= form_with model: @order, url: admin_accept_order_path(@order), method: :patch, local: true do |f| %>
           <%= f.select :status, Order.statuses_i18n.invert %>
-          <td><%= @order.status %></td>
           <%= f.submit "更新", class:'btn btn-info' %>
           <% end %>
         </td>
@@ -33,8 +32,8 @@
     </tbody>
   </table>
   
-<div class="row">
-  <table class="col-8">
+<div class="row pl-5">
+  <table class="col-6">
     <thead>
       <tr>
         <th>商品名</th>
@@ -48,13 +47,10 @@
     <tbody>
       <% @order.order_details.each do |order_detail| %>
       <tr>
-        
         <td><%= order_detail.item.name %></td>
-        <td><%= order_detail.order_id %></td>
         <td><%= (order_detail.price * 1.1).floor %></td>
         <td><%= order_detail.amount%></td>
         <td><%= (order_detail.price * 1.1).floor * order_detail.amount %></td>
-        <td><%= order_detail.making_status %></td>
         
         <%= form_with model: order_detail, url: admin_accept_order_detail_path(order_detail), method: :patch, local: true do |f| %>
         <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %></td>
@@ -64,7 +60,7 @@
       <% end %>
     </tbody>
   </table>
-  <table class="col-4">
+  <table class="col-2">
     <tbody>
       <tr>
         <th>商品合計</th>
