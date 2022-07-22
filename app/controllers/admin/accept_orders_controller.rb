@@ -11,13 +11,8 @@ class Admin::AcceptOrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
     # 注文ステータスが入金確認⇨製作ステータス着手不可から製作待ちに変わる。
-    @order_detail = OrderDetail.where(order_id: @order.id)
-    if params[:order][:status] == 1
-      @order_detail.each do |order_detail|
-        order_detail.making_status = 1
-        @order_detail.making_status = order_detail.making_status
-        @order_detail.update
-      end
+    if params[:order][:status] == "paid_up"
+      OrderDetail.where(order_id: @order.id).update_all(making_status: 1)
     end
     redirect_back(fallback_location: root_path)
   end
