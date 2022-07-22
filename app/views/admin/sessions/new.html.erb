@@ -1,32 +1,32 @@
-<h2>管理者ログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
+<div class="container">
+  
+  <h5 class="bg-light text-dark text-center" style="width:30%; margin-top: 30px">
+    管理者ログイン
+  </h5>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr> 
+          <td><%= f.label :メールアドレス %></td>
+          <td style="width:80%">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :パスワード %></td>
+          <td>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="width:20%">
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-<% if admin_signed_in? %>
-<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-<% end %>
-
-
-
-<%= render "admin/shared/links" %>
+  
+</div>
