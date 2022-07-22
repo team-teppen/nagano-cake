@@ -1,45 +1,84 @@
-<h2>注文情報入力</h2>
-<table>
-<%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
-
-  支払方法
-  <ul class="list-unstyled">
-    <li>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-      <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-    </li>
-
-    <li>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-      <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
-    </li>
-
-  お届け先
-    <li>
-      <%= f.radio_button :select_adress, 0 %>
-      <%= f.label :select_adress, "ご自身の住所" %>
-      <%= current_customer.address_display %>
-      <%= current_customer.customer_name %>
-    </li>
-
-    <li>
-      <% if current_customer.addresses.exists? %>
-        <%= f.radio_button :select_adress, 1 %>
-        <%= f.label :select_adress, "登録先住所から選択" %>
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
-      <% end %>
-    </li>
-
-    <li>
-      <%= f.radio_button :select_adress, 2 %>
-      <%= f.label :select_adress, "新しいお届け先" %>
-      郵便番号
-      <%= f.text_field :postal_code, placeholder: "000000" %>
-      住所
-      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-      宛名
-      <%= f.text_field :name, placeholder: "令和道子" %>
-    </li>
-  <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
-<% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <h4 class="bg-light text-dark text-center" style="margin-top: 30px; margin-bottom: 30px; width: 20%">注文情報入力</h4>
+  </div>
+  
+    <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+    <table>
+      <tbody>
+        <ul class="list-unstyled">
+          <li><b>支払方法</b></li>
+          <li>
+            <ul>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+            </ul>
+          </li>
+          <li>
+            <ul>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+            </ul>
+          </li>
+          
+          <li><b>お届け先</b></li>
+          <li>
+            <ul>
+              <%= f.radio_button :select_adress, 0 %>
+              <%= f.label :select_adress, "ご自身の住所" %>
+            </ul>
+          </li>
+          <li>
+            <ul style="text-indent: 1em">
+              <%= current_customer.address_display %>
+            </ul>
+            <ul style="text-indent: 1em; margin-bottom: 10px">
+              <%= current_customer.customer_name %>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <% if current_customer.addresses.exists? %>
+                <%= f.radio_button :select_adress, 1 %>
+                <%= f.label :select_adress, "登録先住所から選択" %>&emsp;&emsp;&nbsp;&nbsp;
+                <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+              <% end %>
+            </ul>  
+          </li>
+                
+          <li>
+            <ul>
+              <%= f.radio_button :select_adress, 2 %>
+              <%= f.label :select_adress, "新しいお届け先" %>
+            </ul>
+          </li>
+          <li>
+            <ul style="text-indent: 1em; margin-bottom: 10px">
+              郵便番号(ハイフンなし)&emsp;
+              <%= f.text_field :postal_code, placeholder: "000000" %>
+            </ul>
+          </li>
+          <li>
+            <ul style="text-indent: 1em; margin-bottom: 10px">
+              住所&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+              <%= f.text_field :address, :size=>"60", placeholder: "東京都渋谷区代々木神園町0-0" %>
+            </ul>
+          </li>
+          <li>
+            <ul style="text-indent: 1em; margin-bottom: 10px">
+              宛名&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+              <%= f.text_field :name, placeholder: "令和道子" %>
+            </ul>
+          </li>
+        </ul> 
+      </tbody>  
+    </table>
+    
+    <div class="row">
+      <dl class="col-md-6 offset-md-3">
+        <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+      </dl>
+    </div>  
+    
+  <% end %>
+</div>
