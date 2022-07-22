@@ -24,4 +24,9 @@ class Item < ApplicationRecord
     #消費税計算
     (price * 1.1).floor
   end
+  
+  def subtotal
+    #item.rbで定義したwith_tax_priceメソッドを使って小計を計算するメソッド
+    item.with_tax_price * amount
+  end
 end
