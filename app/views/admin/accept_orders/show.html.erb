@@ -53,7 +53,7 @@
         <td><%= (order_detail.price * 1.1).floor * order_detail.amount %></td>
       
         <%= form_with model: order_detail, url: admin_accept_order_detail_path(order_detail), method: :patch, local: true do |f| %>
-        <td><%= f.select , OrderDetail.making_statuses_i18n.invert %></td>
+        <td><%= f.select :make_status, OrderDetail.making_statuses_i18n.invert %></td>
         <td><%= f.submit "更新", class: "btn btn-success" %></td>
         <% end %>
       </tr>
