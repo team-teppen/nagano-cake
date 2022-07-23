@@ -1,24 +1,26 @@
-<h1>配送先編集画面</h1>
+<div class="container">
+  <h4 class="bg-light text-dark text-center" style="margin-top: 20px; margin-bottom: 20px; width: 20%">配送先編集</h4>
 
-<%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
-  <table class="new-form-table">
-    <tbody>
-      <tr>
-        <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
-        <td><%= f.text_field :postal_code %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :"住所" %></th>
-        <td><%= f.text_field :address, class: "col-xs-7 form-control-static address" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :"宛名" %></th>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <th> </th>
-        <td><%= f.submit '編集する' ,class: "col-xs-2 pull-right btn-lg btn-success " %></td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
+  <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
+    <table ="table table-border">
+      <tbody>
+        <tr>
+          <th style="width:10%"><%= f.label :"郵便番号(ハイフンなし)" %></th>
+          <td style="width:50%"><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"住所" %></th>
+          <td><%= f.text_field :address, size: 70, class: "col-xs-7 form-control-static address" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"宛名" %></th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td class="text-right"><%= f.submit '編集内容を保存', class: "btn btn-sm btn-success" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
