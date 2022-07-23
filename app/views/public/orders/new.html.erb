@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <h4 class="bg-light text-dark text-center" style="margin-top: 30px; margin-bottom: 30px; width: 20%">注文情報入力</h4>
+    <h4 class="bg-light text-dark text-center" style="margin-top: 10px; margin-bottom: 10px; width: 20%">注文情報入力</h4>
   </div>
   
-    <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+  <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
     <table>
       <tbody>
         <ul class="list-unstyled">
@@ -69,16 +69,13 @@
               宛名&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
               <%= f.text_field :name, placeholder: "令和道子" %>
             </ul>
+            <ul>
+              <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+            </ul>
           </li>
         </ul> 
       </tbody>  
     </table>
-    
-    <div class="row">
-      <dl class="col-md-6 offset-md-3">
-        <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
-      </dl>
-    </div>  
     
   <% end %>
 </div>
