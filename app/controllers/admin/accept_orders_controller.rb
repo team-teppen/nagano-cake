@@ -3,7 +3,6 @@ class Admin::AcceptOrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @total = @order.order_details.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
-    
   end
   
   
@@ -26,4 +25,5 @@ class Admin::AcceptOrdersController < ApplicationController
   def order_detail_params
     params.require(:order_details).permit(:name, :price, :amount, :making_status, :shipping_cost)
   end
+  
 end
