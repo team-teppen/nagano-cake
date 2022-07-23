@@ -36,8 +36,8 @@
             <%= link_to item_path(item) do %>
               <%= image_tag item.get_image, size: "250x150" %>
             <% end %><br>
-            <span class="text-muted"><%= link_to item.genre.name, item_path(item.genre_id) %></span><br>
-		        <strong class="red-border"><%= item.name %></strong><br>
+            <span class="text-muted"><%= item.genre.name %></span><br>
+		        <strong class="red-border"><%= link_to item.name, item_path(item.id) %></strong><br>
 		        <strong class="ml-auto">￥<%= (item.price * 1.1).floor %></strong><br>
           </div>
           <% end %>
