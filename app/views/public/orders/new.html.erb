@@ -2,6 +2,13 @@
   <div class="row">
     <h4 class="bg-light text-dark text-center" style="margin-top: 10px; margin-bottom: 10px; width: 20%">注文情報入力</h4>
   </div>
+  <div class="row">
+    <div class="col">
+      <div class="text-center", style="color: red">
+        <strong><%= flash[:alret]%></strong>
+      </div>
+    </div>
+  </div>
   <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
     <table>
       <tbody>
