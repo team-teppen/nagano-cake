@@ -8,24 +8,24 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+    
     <% if request.fullpath.include? "/admin" %>
       <%= render 'layouts/admin_header' %>
     <% else %>
       <%= render 'layouts/customer_header' %>
     <% end %>
-    <%= flash[:success] %>
-    <%= yield %>
-    <footer class="fixed-bottom border-top bg-dark" style="height: 85px;">
-      <div class="container">
-        <div class="row">
-          <div class="offset-4">
-            <div class="mt-4 pt-2 text-light">Copyright © NaganoCake Inc. All Rights Reserved.</div>
-          </div>
-        </div>
-      </div>
+   
+    <main>
+      <%= flash[:success] %>
+      <%= yield %>
+    </main>
+    
+    <footer class="border-top text-light bg-dark" style="height: 85px; text-align: center ; line-height: 85px;">
+      Copyright © NaganoCake Inc. All Rights Reserved.
     </footer>
   </body>
 </html>
