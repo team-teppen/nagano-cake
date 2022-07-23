@@ -66,7 +66,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if Order.find_by(id: params[:id])
+      @order = Order.find(params[:id])
+    else
+      flash[:alret] = "!error! 配送先を選んでください!"
+      redirect_to new_order_path
+    end
   end
 
   private
