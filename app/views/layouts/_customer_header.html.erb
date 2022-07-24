@@ -2,7 +2,10 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <%= link_to "ながのcake", root_path, class: 'navbar-brand' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo-s.png' %>
+        <% end %> 
+        
       </div>
           <% if customer_signed_in? %>
             <span class="nav-link text-center text-light">
