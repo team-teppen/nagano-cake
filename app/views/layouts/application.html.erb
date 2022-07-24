@@ -12,19 +12,19 @@
   </head>
 
   <body>
-    
+
     <% if request.fullpath.include? "/admin" %>
       <%= render 'layouts/admin_header' %>
     <% else %>
       <%= render 'layouts/customer_header' %>
     <% end %>
-   
+
     <main>
       <%= flash[:success] %>
       <%= yield %>
     </main>
-    
-    <footer class="border-top text-light bg-dark" style="height: 85px; text-align: center ; line-height: 85px;">
+
+    <footer class="border-top text-light bg-dark" style="height: 85px; text-align: center ; line-height: 85px; margin-top: auto;">
       Copyright © NaganoCake Inc. All Rights Reserved.
     </footer>
   </body>
