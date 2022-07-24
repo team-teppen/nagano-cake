@@ -21,16 +21,16 @@
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
             <% else %>
-              <li class="nav-item">
+              <li class="nav-item" style="list-style: none">
                 <%= link_to "About", about_path, class: "nav-link text-light" %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" style="list-style: none">
                 <%= link_to "商品一覧", admin_items_path, class: "nav-link text-light" %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" style="list-style: none">
                 <%= link_to "新規登録", new_admin_session_path, class: 'nav-link text-light' %>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" style="list-style: none">
                 <%= link_to "ログイン", admin_session_path, method: :post, class: 'nav-link text-light' %>
               </li>
           </ul>
