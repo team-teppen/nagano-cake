@@ -27,9 +27,6 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_adress] == "2"
       @order.save
       @address_info = address_info
-    else
-      flash[:notice] = '失敗'
-      redirect_to
     end
     @cart_items = CartItem.all
     #合計金額の初期値を0にしておく
@@ -69,7 +66,7 @@ class Public::OrdersController < ApplicationController
     if Order.find_by(id: params[:id])
       @order = Order.find(params[:id])
     else
-      flash[:alret] = "!error! 配送先を選んでください!"
+      flash[:alret] = "!再度　確認画面へ進むを押してください!"
       redirect_to new_order_path
     end
   end
