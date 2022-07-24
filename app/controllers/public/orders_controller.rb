@@ -15,16 +15,18 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_adress] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
       @order.save
       @address_info = address_info
     elsif params[:order][:select_adress] == "1"
       address = Address.find(params[:order][:address_id])
       @order.postal_code = address.postal_code
       @order.address = address.address
+      @order.name = current_customer.last_name + current_customer.first_name
       @order.save
       @address_info = address_info
     elsif params[:order][:select_adress] == "2"
+      @order.name = current_customer.last_name + current_customer.first_name
       @order.save
       @address_info = address_info
     end
