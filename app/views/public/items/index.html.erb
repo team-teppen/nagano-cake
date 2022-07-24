@@ -30,13 +30,12 @@
           </div>
         </div>
 
-        <div class ="row justify-content-sm-around">
+        <div class ="row justify-content-lg-around">
           <% @items.each do |item| %>
           <div class="col-mt-3">
             <%= link_to item_path(item) do %>
-              <%= image_tag item.get_image, size: "250x150" %>
+              <%= image_tag item.get_image, size: "200x100" %>
             <% end %><br>
-            <span class="text-muted"><%= item.genre.name %></span><br>
 		        <strong class="red-border"><%= link_to item.name, item_path(item.id) %></strong><br>
 		        <strong class="ml-auto">￥<%= (item.price * 1.1).floor %></strong><br>
           </div>
