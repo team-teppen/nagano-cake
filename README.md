@@ -1,4 +1,5 @@
 # nagano_cake
+![logo-m](https://user-images.githubusercontent.com/106795266/180699711-b76a2525-8cb3-4699-8765-ca723b39a42a.png)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
