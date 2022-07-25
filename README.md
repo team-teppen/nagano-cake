@@ -19,4 +19,4 @@
 
 # Entity-Relationship
 
-https://drive.google.com/file/d/1vFk0GTAANPS3KVKvmgOrSGD_Pw4wLlLi/view?usp=sharing
+![Untitled Diagram](https://user-images.githubusercontent.com/106795266/180702405-3121eb88-aa41-4ca3-9fd5-e06709ae336d.jpg)
